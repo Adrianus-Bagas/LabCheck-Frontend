@@ -1,6 +1,4 @@
 import { Navigate, Outlet } from "react-router-dom";
-import DashboardAdmin from "../pages/DashboardAdmin";
-import DashboardCustomer from "../pages/DashboardCustomer";
 
 function PageHandling({allowedRole}) {
 
