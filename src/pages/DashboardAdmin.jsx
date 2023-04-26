@@ -1,6 +1,8 @@
 function DashboardAdmin(){
     return <>
-        <h1>Dashboard Admin</h1>
+        <div className="h-screen">
+            <h1>Dashboard Admin</h1>
+        </div>
     </>
 }
 

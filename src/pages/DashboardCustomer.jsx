@@ -1,6 +1,11 @@
+import Header from "../components/Header";
+
 function DashboardCustomer(){
     return <>
-        <h1>Dashboard Customer</h1>
+        <div className="h-screen">
+            <Header/>
+            <h1>Dashboard Customer</h1>
+        </div>
     </>
 }
 

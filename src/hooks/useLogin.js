@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LoadingAction, LoginAction } from '../action/Auth';
 import AuthService from '../service/Auth';
+import Swal from 'sweetalert2';
 
 function useLogin(body){
 
@@ -19,8 +20,9 @@ function useLogin(body){
         localStorage.setItem('User', response.data.username);
         localStorage.setItem('Email', response.data.email);
         localStorage.setItem('Role', response.data.role);
-
+    
         dispatch(LoginAction(response.data.token));
+
         console.log(response);
         dispatch(LoadingAction(false));
 
@@ -30,6 +32,17 @@ function useLogin(body){
             navigate("/customer");
         }
     } catch(error){
+        Swal.fire({
+            title: "Login Gagal",
+            icon: "error",
+            text: "Pastikan Username dan Password sudah benar",
+            confirmButtonText: "Kembali ke Login",
+            allowOutsideClick: false
+        }).then((result)=>{
+            if(result.isConfirmed){
+                window.location.reload();
+            }
+        });
         console.log(error);
     }
     }
