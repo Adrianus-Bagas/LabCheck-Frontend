@@ -1,42 +1,22 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import useLogin from "../hooks/useLogin";
-import useForm from "../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+import LoadingComponent from "../components/LoadingComponent";
+import { useEffect } from "react";
+import FormLoginComponent from "../components/FormLoginComponent";
 
 function LoginPage(){
     const authState = useSelector(state => state.auth);
+    const navigate = useNavigate();
 
-    if(authState.token !== null){
-        if(localStorage.getItem('Role') === "admin") return <Navigate to="/admin"/>;
-        return <Navigate to="/customer"/>;
-    }
-    const { formInput, handleInput } = useForm({
-        username: "",
-        password: ""
-    });
-    const { handleLogin } = useLogin(formInput);
-
+    useEffect(()=>{
+        if(authState.token !== null){
+            localStorage.getItem('Role') === "admin" ? navigate("/admin") : navigate("/customer");
+        }
+    }, []);
 
     return authState.isLoading === true
-    ? <h1>Loading...</h1>
-    : <>
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
-            <label>
-                Username : &nbsp;
-                <input type="text" value={formInput.username} onChange={(event)=>handleInput('username',event.target.value)}/>
-            </label>
-            <br />
-            <br />
-            <label>
-                Password : &nbsp;
-                <input type="password" value={formInput.password} onChange={(event)=>handleInput('password',event.target.value)}/>
-            </label>
-            <br />
-            <br />
-            <button>Login</button>
-        </form>
-    </>
+    ? <LoadingComponent/>
+    : <FormLoginComponent/>
 }
 
 export default LoginPage;
