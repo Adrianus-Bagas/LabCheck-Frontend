@@ -15,7 +15,6 @@ export const LoadingAction = (isLoading) => {
 };
 
 export const LogoutAction = () => {
-    localStorage.clear();
     return {
         type: LOGOUT
     };

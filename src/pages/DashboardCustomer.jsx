@@ -2,7 +2,7 @@ import Header from "../components/Header";
 
 function DashboardCustomer(){
     return <>
-        <div className="h-screen">
+        <div>
             <Header/>
             <h1>Dashboard Customer</h1>
         </div>

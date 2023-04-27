@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { LoadingAction, LoginAction } from '../action/Auth';
+import { LoadingAction, LoginAction, LogoutAction } from '../action/Auth';
 import AuthService from '../service/Auth';
 import Swal from 'sweetalert2';
 
-function useLogin(body){
+function useAuth(body){
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -46,7 +46,14 @@ function useLogin(body){
         console.log(error);
     }
     }
-    return { navigate, dispatch, handleLogin };
+
+    const handleLogout = (event) => {
+        event.preventDefault();
+        localStorage.clear();
+        dispatch(LogoutAction());
+        navigate("/");
+    }
+    return { navigate, dispatch, handleLogin, handleLogout };
 }
 
-export default useLogin;
+export default useAuth;

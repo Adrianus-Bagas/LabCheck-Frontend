@@ -1,7 +1,11 @@
+import DashboardAdminContent from "../components/DashboardAdminContent";
+import SideBar from "../components/Sidebar";
+
 function DashboardAdmin(){
     return <>
-        <div className="h-screen">
-            <h1>Dashboard Admin</h1>
+        <div>
+            <SideBar role={localStorage.getItem('Role')}/>
+            <DashboardAdminContent/>
         </div>
     </>
 }

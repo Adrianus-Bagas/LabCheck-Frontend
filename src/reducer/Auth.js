@@ -1,7 +1,7 @@
 import { LOGIN, IS_LOADING, LOGOUT } from "../constants/ActionTypes";
 
 const INIT_STATE = {
-  token: localStorage.getItem("Token"),
+  token: null,
   isLoading: false,
 };
 

@@ -1,5 +1,5 @@
 import useForm from "../hooks/useForm";
-import useLogin from "../hooks/useLogin";
+import useAuth from "../hooks/useAuth";
 import FormInput from "./FormInput";
 
 function FormLoginComponent() {
@@ -8,11 +8,11 @@ function FormLoginComponent() {
     password: "",
   });
 
-  const { handleLogin } = useLogin(formInput);
+  const { handleLogin } = useAuth(formInput);
 
   return (
     <>
-      <div className="h-screen background">
+      <div className="h-screen">
         <div className="h-full grid place-content-center">
           <div className="mx-auto w-full bg-yellow-300 p-3 text-center">
             <h1 className="text-5xl font-bold">LabCheck</h1>
