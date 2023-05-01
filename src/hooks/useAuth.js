@@ -27,9 +27,9 @@ function useAuth(body){
         dispatch(LoadingAction(false));
 
         if(response.data.role === "admin"){
-            navigate("/admin");
+            navigate("/admin/dashboard");
         }else{
-            navigate("/customer");
+            navigate("/customer/dashboard");
         }
     } catch(error){
         Swal.fire({

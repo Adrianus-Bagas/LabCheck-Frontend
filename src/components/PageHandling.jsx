@@ -11,7 +11,7 @@ function PageHandling({allowedRole}) {
         if(role === allowedRole){
             return <Outlet/>
         }else{
-            return <Navigate to={`/${role}`}/>
+            return <Navigate to={`/${role}/dashboard`}/>
         }
     }
 }
